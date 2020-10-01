@@ -112,7 +112,10 @@ def book(isbn_val):
 def mybook_api(isbn_val):
     book = db.execute("SELECT * FROM books WHERE isbn=:isbn", {"isbn": isbn_val}).fetchone()
     print(book)
-   
+    if book == None:
+        return jsonify({
+            "error": "Book not found"
+        })
     else:
         return jsonify({
             "title": book.title,
