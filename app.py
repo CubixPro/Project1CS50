@@ -77,7 +77,8 @@ def searchshow():
 
 @app.route("/logout")
 def logout():
-   
+    # username should be poped out from the queue #issue2
+    session.pop('username',None)
     return render_template("login.html", check = 0, check2 = 0)
 
 
